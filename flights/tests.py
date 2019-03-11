@@ -69,7 +69,7 @@ class FlightsTestCase(TestCase):
         f.passengers.add(p)
 
         c = Client()
-        response = c.get("/{f.id}")
+        response = c.get("/{}".format(f.id))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context["passengers"].count(), 1)
 
@@ -78,6 +78,6 @@ class FlightsTestCase(TestCase):
         p = Passenger.objects.create(first="Alice", last="Adams")
 
         c = Client()
-        response = c.get(f"/{f.id}")
+        response = c.get("/{}".format(f.id))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context["non_passengers"].count(), 1)
