@@ -1,0 +1,7 @@
+language: python
+python:
+    - 3.4   #django8: 12 changed from 3.6
+install:
+    - pip install -r requirements.txt
+script:
+    - python manage.py test
